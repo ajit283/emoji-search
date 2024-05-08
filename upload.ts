@@ -54,6 +54,7 @@ const emojisCollection = await client.collections.create({
       description: "The section of the emoji",
     },
   ],
+  // @ts-ignore
   vectorizer: weaviate.configure.vectorizer.text2VecOpenAI(),
 });
 
