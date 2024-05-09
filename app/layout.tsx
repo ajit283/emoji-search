@@ -15,7 +15,7 @@ const noto_serif = Noto_Serif({
 
 export const metadata: Metadata = {
   title: "Emoji 🚀 Search 👀",
-  description: "Find a quote that supports your argument",
+  description: "Find the perfect emoji",
 };
 
 export default function RootLayout({
