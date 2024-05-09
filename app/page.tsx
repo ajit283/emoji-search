@@ -35,7 +35,7 @@ export default async function Home({
       <div className="flex flex-col sm:w-3/4 px-5">
         <div className="sm:py-24 py-16">
           <div className=" text-4xl sm:text-5xl font-extrabold ">
-            <a className="" href="/">
+            <a className="text-7xl" href="/">
               Emoji 🚀 Search 👀
             </a>
           </div>
@@ -56,7 +56,7 @@ export default async function Home({
             to learn more.
           </div> */}
           <div className="flex flex-row justify-center sm:justify-start pt-5   items-center gap-3">
-            <div className=" text-lg sm:block hidden">powered by</div>
+            <div className=" text-lg">powered by</div>
             <a
               className="hover:scale-105 transition-all duration-250"
               href="https://weaviate.io"
@@ -65,11 +65,11 @@ export default async function Home({
               <Image
                 src="/weaviate.png"
                 alt="Weaviate logo"
-                width={125}
-                height={125}
+                width={85}
+                height={85}
               />
             </a>
-            <div className="text-lg sm:block hidden">Weaviate</div>
+            <div className="text-lg">Weaviate</div>
           </div>
         </div>
         <QuoteFinder

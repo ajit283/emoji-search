@@ -17,11 +17,15 @@ const cohere = new CohereClient({
 });
 
 export async function findQuotesByArgument(searchTerm: string, alpha: number) {
-  // const cachedResult = await kv.get<EmojiType[]>(searchTerm + alpha.toString());
+  const kvStorePrefix = "emojis__";
 
-  // if (cachedResult) {
-  //   return cachedResult;
-  // }
+  const cachedResult = await kv.get<EmojiType[]>(
+    kvStorePrefix + searchTerm + alpha.toString()
+  );
+
+  if (cachedResult) {
+    return cachedResult;
+  }
 
   const collection = await client.collections.get<Omit<EmojiType, "distance">>(
     "Emojis"
@@ -63,10 +67,10 @@ export async function findQuotesByArgument(searchTerm: string, alpha: number) {
   // const rerankedQuotesAndAuthorsArray = quotesAndAuthorsArray;
 
   console.log(rerankedQuotesAndAuthorsArray.map((q) => q.representation));
-  // await kv.set(
-  //   searchTerm + alpha.toString(),
-  //   JSON.stringify(rerankedQuotesAndAuthorsArray)
-  // );
+  await kv.set(
+    kvStorePrefix + searchTerm + alpha.toString(),
+    JSON.stringify(rerankedQuotesAndAuthorsArray)
+  );
 
   return rerankedQuotesAndAuthorsArray;
 }
