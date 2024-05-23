@@ -17,6 +17,8 @@ if (await client.collections.exists("Emojis")) {
   await client.collections.delete("Emojis");
 }
 
+await client.collections.delete("Emojis");
+
 const emojisCollection = await client.collections.create({
   name: "Emojis",
   properties: [
@@ -77,9 +79,9 @@ const openai = new OpenAI({
 });
 
 async function getDescriptionFromChatGpt(text: string): Promise<string> {
-  const prompt = `Write about the different ways in which people might use the following emoji: ${text}`;
+  const prompt = `Your output will be used to do semantic search on Emojis. Write about the different ways in which people might use the following emoji so that users can search for it: ${text}`;
   const response = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
     messages: [
       {
         role: "user",
@@ -114,6 +116,7 @@ emojisDataset.forEach(async (emoji) => {
     section: emoji[6],
     description: await getDescriptionFromChatGpt(emojiWithoutSkinTone),
   };
+  console.log(properties);
   await emojisCollection.data.insert(properties);
 });
 

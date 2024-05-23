@@ -23,9 +23,9 @@ export async function findQuotesByArgument(searchTerm: string, alpha: number) {
     kvStorePrefix + searchTerm + alpha.toString()
   );
 
-  if (cachedResult) {
-    return cachedResult;
-  }
+  // if (cachedResult) {
+  //   return cachedResult;
+  // }
 
   const collection = await client.collections.get<Omit<EmojiType, "distance">>(
     "Emojis"
