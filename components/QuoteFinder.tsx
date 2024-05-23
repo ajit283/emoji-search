@@ -114,7 +114,7 @@ export default function QuoteFinder({
           } transition-all  h-10  self-end   hover:scale-105     flex  items-center justify-center border-2  text-2xl py-2 px-4 rounded-lg`}
         >
           {/* <MagnifyingGlassIcon className="h-5 w-5" /> */}
-          <span className="whitespace-nowrap">Search</span>
+          <span className="whitespace-nowrap font-bold text-base">Search</span>
         </button>
       </form>
 
